@@ -16,7 +16,14 @@
               <div class="dashboard-content">
                 <div class="row mt-3">
                   <div class="col-12 mt-2">
-                    
+                    <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="/images/banner0.jpg"
+                      alt="carousel Image"
+                      class="d-block w-100"
+                    />
+                  </div>
                     </a>
                   </div>
                 </div>

@@ -30,7 +30,7 @@
               href="{{ route('dashboard') }}"
               class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : '' }}"
             >
-              Dashboard
+              Welcome
             </a>
             <a
               href="{{ route('dashboard-transaction') }}"
