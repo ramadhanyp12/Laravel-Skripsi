@@ -4,7 +4,7 @@
     >
       <div class="container">
         <a href="{{ route('home') }}" class="navbar-brand">
-          <img src="images/logo.png" width="80" alt="Logo" />
+          <img src="images/logo.png" width="80" alt="" />
         </a>
         <button
           class="navbar-toggler"

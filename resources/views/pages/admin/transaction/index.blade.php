@@ -16,6 +16,16 @@
             <p class="dashboard-subtitle">
                 Daftar Transaksi
             </p>
+            {{-- <div class="row mt-4">
+                <div class="col">
+                    <form method="POST" class="form-inline">
+                        <input type="date" name="tgl-mulai" class="form-control">
+                        <input type="date" name="tgl-selesai" class="form-control ml-3">
+                        <button type="submit" name="filter_tgl" class="btn btn-info ml-3">Filter</button>
+                    </form>
+                </div>
+            </div> --}}
+            <br>
         </div>
         <div class="dashboard-content">
             <div class="row">
@@ -73,4 +83,15 @@
             ]
         });
     </script>
+    {{-- <script>
+        
+                if(isset($_POST['filter_tgl'])){
+                    $mulai = mysqli_real_escape_string($_POST['tgl_mulai']);
+                    $selesai = mysqli_real_escape_string($_POST['tgl_selesai']);
+                    $data = mysqli_query("SELECT * FROM transactions WHERE created_at BETWEEN '$mulai' AND '$selesai'");
+                }elseif {
+                    $data = mysqli_query("SELECT * FROM transactions");
+                }
+            
+    </script> --}}
 @endpush

@@ -40,7 +40,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @php $totalPrice = 0 @endphp
+                  @php $totalPrice = 0;
+                       $ongkir = 0; @endphp
                   @foreach ($carts as $cart)
                  <tr>
                       <td style="width: 20%;">
@@ -95,7 +96,7 @@
                   class="form-control"
                   id="address"
                   name="address"
-                  value="{{ Auth::user()->address }}"
+                  value=""
                 />
               </div>
             </div>
@@ -163,20 +164,24 @@
             </div>
           </div>
           <div class="row" data-aos="fade-up" data-aos-delay="200">
-            {{-- <div class="col-4 col-md-2">
-              <div class="product-title">Rp 0</div>
-              <div class="product-subtitle">Country Tax</div>
-            </div>
-            <div class="col-4 col-md-3">
-              <div class="product-title">Rp 0</div>
-              <div class="product-subtitle">Country Tax</div>
+            @if ($totalPrice > 0)
+                <div class="col-4 col-md-2">
+              <div class="product-title text-success">
+                                    @if ($totalPrice >= 0 && $totalPrice <= 10000)
+                                        Rp. {{ number_format($ongkir = 10000) }}
+                                    @elseif ($totalPrice >= 10000 && $totalPrice <= 30000)
+                                        Rp. {{ number_format($ongkir = 10000) }}
+                                    @elseif ($totalPrice >30000 && $totalPrice <= 50000)
+                                        Rp. {{ number_format($ongkir = 15000) }}
+                                    @elseif ($totalPrice >60000 && $totalPrice <= 100000)
+                                        Rp. {{ number_format($ongkir = 20000) }}
+                                    @elseif ($totalPrice > 100000)
+                                        Rp. {{ number_format($ongkir = 30000) }}
+                                    @endif</div>
+              <div class="product-subtitle">Ongkir</div>
             </div>
             <div class="col-4 col-md-2">
-              <div class="product-title">Rp 0</div>
-              <div class="product-subtitle">Ship to Solo</div>
-            </div> --}}
-            <div class="col-4 col-md-2">
-              <div class="product-title text-success">Rp {{ number_format($totalPrice ?? 0) }}</div>
+              <div class="product-title text-success">Rp {{ number_format($totalPrice = $totalPrice + $ongkir ?? 0) }}</div>
               <div class="product-subtitle">Total</div>
             </div>
             <div class="col-8 col-md-3">
@@ -187,7 +192,30 @@
                 Checkout Now
               </button>
             </div>
+              @else
+              <div class="col-3 col-md-2">
+              <div class="product-title">Rp. 0</div>
+              <div class="product-subtitle">Ongkir</div>
+              </div>
+              <div class="col-3 col-md-2">
+              <div class="product-title text-success">
+              Rp. 0
+              </div>
+              <div class="product-subtitle">Total</div>
+              </div>
+              <div class="col-12 col-md-3">
+              <a
+              href="#x"
+              class="btn btn-success mt-4 px-4 btn-block"
+              >
+              Belanja dahulu
+              </a>
+              </div>
+            @endif
+
+            <input type="hidden" name="total_price" value="{{ $totalPrice }}">
           </div>
+
           </form>
         </div>
       </section>

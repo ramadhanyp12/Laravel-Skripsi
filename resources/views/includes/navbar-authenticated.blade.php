@@ -3,8 +3,8 @@
       data-aos="fade-down"
     >
       <div class="container">
-        <a href="/index.html" class="navbar-brand">
-          <img src="images/logo.png" width="120" alt="Logo" />
+        <a href="{{ route('home') }}" class="navbar-brand">
+          <img src="images/logo.png" width="110" alt="Logo" />
         </a>
         <button
           class="navbar-toggler"
@@ -57,10 +57,14 @@
           </ul>
           <ul class="navbar-nav d-block d-lg-none">
             <li class="nav-item">
-              <a href="#" class="nav-link"> Hi, Yudha </a>
+              <a href="{{ route('dashboard') }}" class="nav-link">
+                        Hi, {{ Auth::user()->name }}
+                    </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link d-inline-block"> Cart </a>
+              <a href="{{ route('cart') }}" class="nav-link d-inline-block">
+                        Cart
+                    </a>
             </li>
           </ul>
         </div>

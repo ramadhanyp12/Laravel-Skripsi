@@ -46,6 +46,12 @@
               My Account
             </a>
             <a
+              href="{{ route('home') }}"
+              class="list-group-item list-group-item-action"
+            >
+              Landing Page
+            </a>
+            <a
               href="{{ route('logout') }}"
                onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"
