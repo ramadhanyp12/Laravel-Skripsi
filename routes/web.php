@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/dashboard/account', 'DashboardSettingController@account')->name('dashboard-settings-account');
     Route::post('/dashboard/account/{redirect}', 'DashboardSettingController@update')
         ->name('dashboard-settings-redirect');
+
 });
 
 Route::prefix('admin')
@@ -59,6 +60,7 @@ Route::prefix('admin')
         Route::get('/', 'DashboardController@index')->name('admin-dashboard');
         Route::resource('category', 'CategoryController');
         Route::resource('user', 'UserController');
+        // Route::get('/dashboard/user/create', 'UserController@create');
         Route::resource('product', 'ProductController');
         Route::resource('product-gallery', 'ProductGalleryController');
         Route::resource('detail', 'TransactionDetailController');

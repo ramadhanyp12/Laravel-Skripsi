@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\User;
 use Exception;
 use Midtrans\Snap;
 use App\Transaction;
@@ -62,6 +63,12 @@ class CheckoutController extends Controller
         Config::$is3ds = config('services.midtrans.is3ds');
 
         // // Buat array untuk dikirim ke midtrans
+        $shipping_address = array(
+                'address'      => Auth::user()->address,
+                'city'         => Auth::user()->regencies,
+                // 'city3'         => Auth::user()->provincies,
+                'postal_code'  => Auth::user()->zip_code
+        );
         $midtrans = array(
             'transaction_details' => array(
                 'order_id' =>  $code,
@@ -70,6 +77,8 @@ class CheckoutController extends Controller
             'customer_details' => array(
                 'first_name'    => Auth::user()->name,
                 'email'         => Auth::user()->email,
+                'phone'  => Auth::user()->phone_number,
+                'billing_address'  => $shipping_address
             ),
             'enabled_payments' => array('gopay','bank_transfer'),
             'vtweb' => array()
