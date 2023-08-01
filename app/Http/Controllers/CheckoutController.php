@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Product;
 use App\User;
 use Exception;
 use Midtrans\Snap;
@@ -12,6 +13,7 @@ use App\TransactionDetail;
 use Midtrans\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
@@ -26,7 +28,7 @@ class CheckoutController extends Controller
         $carts = Cart::with(['product','user'])
                     ->where('users_id', Auth::user()->id)
                     ->get();
-
+        // dd($carts);
         // Transaction create
         $transaction = Transaction::create([
             'users_id' => Auth::user()->id,
@@ -48,6 +50,12 @@ class CheckoutController extends Controller
                 'resi' => '',
                 'code' => $trx
             ]);
+
+            // Product::update([
+            //     'id' => $cart->product->id,
+            //     'stock' => $cart->product->stock - 1,
+            // ]);
+            Product::where('id', $cart->product->id)->update(['stock' => $cart->product->stock - 1]);
         }
 
 
@@ -66,7 +74,7 @@ class CheckoutController extends Controller
         $shipping_address = array(
                 'address'      => Auth::user()->address,
                 'city'         => Auth::user()->regencies,
-                // 'city3'         => Auth::user()->provincies,
+                'city3'         => Auth::user()->provincies,
                 'postal_code'  => Auth::user()->zip_code
         );
         $midtrans = array(
@@ -80,7 +88,7 @@ class CheckoutController extends Controller
                 'phone'  => Auth::user()->phone_number,
                 'billing_address'  => $shipping_address
             ),
-            'enabled_payments' => array('gopay','bank_transfer'),
+            'enabled_payments' => array('permata_va', 'bank_transfer'),
             'vtweb' => array()
         );
 

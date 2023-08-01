@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Transaction;
+use App\Category;
 use App\TransactionDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Exports\TransactionDetailExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Yajra\DataTables\Facades\DataTables;
 
@@ -21,7 +24,7 @@ class TransactionDetailController extends Controller
     {
         if (request()->ajax()) {
             $query =
-            TransactionDetail::with(['transaction.user', 'product.galleries']);
+            TransactionDetail::with(['transaction.user', 'product.galleries','product.category']);
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
@@ -134,5 +137,9 @@ class TransactionDetailController extends Controller
         $item->delete();
 
         return redirect()->route('detail.index');
+    }
+
+    public function transactiondetailexport(){
+        return Excel::download(new TransactionDetailExport,'transactionDetail.xlsx');
     }
 }

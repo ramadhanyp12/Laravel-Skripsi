@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Transaction;
+use App\Exports\TransactionExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Yajra\DataTables\Facades\DataTables;
 
@@ -134,5 +136,9 @@ class TransactionController extends Controller
         $item->delete();
 
         return redirect()->route('transaction.index');
+    }
+
+    public function transactionexport(){
+        return Excel::download(new TransactionExport,'transaction.xlsx');
     }
 }

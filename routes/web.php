@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/product/search', 'HomeController@search')->name('search');
+
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/{id}', 'CategoryController@detail')->name('categories-detail');
 
@@ -47,6 +49,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/dashboard/transactions/{id}', 'DashboardTransactionController@update')
         ->name('dashboard-transaction-update');
 
+    
+
     Route::get('/dashboard/account', 'DashboardSettingController@account')->name('dashboard-settings-account');
     Route::post('/dashboard/account/{redirect}', 'DashboardSettingController@update')
         ->name('dashboard-settings-redirect');
@@ -64,6 +68,10 @@ Route::prefix('admin')
         Route::resource('product', 'ProductController');
         Route::resource('product-gallery', 'ProductGalleryController');
         Route::resource('detail', 'TransactionDetailController');
+        Route::get('/exporttransaction', 'TransactionDetailController@transactiondetailexport')
+        ->name('exporttransaction');
+        Route::get('/exporttransaction2', 'TransactionController@transactionexport')
+        ->name('exporttransaction2');
         Route::resource('transaction', 'TransactionController');
     });
 

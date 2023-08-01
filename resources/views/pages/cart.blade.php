@@ -96,7 +96,7 @@
                   class="form-control"
                   id="address"
                   name="address"
-                  value=""
+                  value="{{ Auth::user()->address }}"
                 />
               </div>
             </div>
@@ -181,7 +181,8 @@
               <div class="product-subtitle">Ongkir</div>
             </div>
             <div class="col-4 col-md-2">
-              <div class="product-title text-success">Rp {{ number_format($totalPrice = $totalPrice + $ongkir ?? 0) }}</div>
+              <div class="product-title text-success">
+                Rp {{ number_format($totalPrice = $totalPrice + $ongkir ?? 0) }}</div>
               <div class="product-subtitle">Total</div>
             </div>
             <div class="col-8 col-md-3">
@@ -205,7 +206,7 @@
               </div>
               <div class="col-12 col-md-3">
               <a
-              href="#x"
+              href="{{ route('home') }}"
               class="btn btn-success mt-4 px-4 btn-block"
               >
               Belanja dahulu

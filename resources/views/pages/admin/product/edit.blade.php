@@ -57,6 +57,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Stock</label>
+                                        <input type="number" name="stock" id="" class="form-control" value="{{ $item->stock }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>Deskripsi Barang</label>
                                         <textarea name="description" id="editor" >{!! $item->description !!}</textarea>
                                     </div>

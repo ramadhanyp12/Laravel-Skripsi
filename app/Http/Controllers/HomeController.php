@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::take(6)->get();
-        $products = Product::with(['galleries'])->take(8)->get();
+        $products = Product::with(['galleries'])->where('stock','!=',0)->get();
 
         return view('pages.home',[
             'categories' => $categories,
@@ -26,11 +26,16 @@ class HomeController extends Controller
 
     public function search(Request $request) {
         if($request->has('search')) {
+            $categories = Category::all();
             $products = Product::where('name','LIKE','%'.$request->search.'%')->get();
         }
         else {
+            $categories = Category::all();
             $products = Product::all();
         }
-        return view('products.index',['products' => $products]);
+        return view('pages.home',[
+            'categories' => $categories,
+            'products' => $products
+        ]);
     }
 }

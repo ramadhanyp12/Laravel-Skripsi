@@ -16,6 +16,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <form action="{{ route('search') }}" class="form-inline" method="GET">
+                      <input type="search" name="search" class="form-control float-right" placeholder="search">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </form>
             <li class="nav-item">
               <a href="{{ route('home') }}" class="nav-link">Home</a>
             </li>
@@ -100,3 +108,9 @@
         </div>
       </div>
     </nav>
+
+    {{-- @push('addon-script')
+    <script>
+      window.scrollTo(0, document.body.scrollHeight);
+    </script>
+@endpush --}}
