@@ -26,6 +26,7 @@
                     required
                     autocomplete="name"
                     autofocus
+                    style="border-color: #28a745;"
                   >
                   @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -45,6 +46,7 @@
                     required
                     autocomplete="regencies"
                     autofocus
+                    style="border-color: #28a745;"
                   >
                   @error('regencies')
                     <span class="invalid-feedback" role="alert">
@@ -64,6 +66,7 @@
                     required
                     autocomplete="provincies"
                     autofocus
+                    style="border-color: #28a745;"
                   >
                   @error('provincies')
                     <span class="invalid-feedback" role="alert">
@@ -84,6 +87,7 @@
                     value="{{ old('email') }}"
                     required
                     autocomplete="email"
+                    style="border-color: #28a745;"
                   >
                   @error('email')
                   <span class="invalid-feedback" role="alert">
@@ -100,6 +104,7 @@
                     name="password"
                     required
                     autocomplete="new-password"
+                    style="border-color: #28a745;"
                   >
                   @error('password')
                       <span class="invalid-feedback" role="alert">
@@ -116,6 +121,7 @@
                       name="password_confirmation"
                       required
                       autocomplete="new-password"
+                      style="border-color: #28a745;"
                   >
                 </div>
                 @error('password-confirmation')
@@ -128,7 +134,7 @@
                   class="btn btn-success btn-block mt-4"
                   :disabled="this.email_unavailable"
                 >Daftar Sekarang</button>
-                <a href="{{ route('login') }}" class="btn btn-signup btn-block mt-sm-4">
+                <a href="{{ route('login') }}" class="btn btn-signup btn-block mt-sm-4" style="background-color: #007bff; color: #fff;">
                   Kembali ke Login
                 </a>
               </form>

@@ -128,3 +128,8 @@
     </div>
 @endsection
 
+@push('addon-script')
+    <script>
+      window.scrollTo(0, document.body.scrollHeight);
+    </script>
+@endpush

@@ -21,7 +21,7 @@
                         @csrf
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input id="email" type="email" class="form-control w-75 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control w-75 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="border-color: #28a745;">
                             
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input id="password" type="password" class="form-control w-75 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <input id="password" type="password" class="form-control w-75 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="border-color: #28a745;">
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -48,9 +48,12 @@
                         <a
                             href="{{ route('register') }}"
                             class="btn btn-signup btn-block w-75 mt-2"
+                            style="background-color: #007bff; color: #fff;"
                         >
                             Sign Up
                         </a>
+                        <br>
+                        <a href="/forgot-password" >Forgot Password ?</a>
                     </form>
                 </div>
             </div>
