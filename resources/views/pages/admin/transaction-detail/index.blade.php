@@ -79,12 +79,13 @@
         ]
       });
     </script> --}}
-    <script type="text/javascript"> 
+    <script type="text/javascript">
     $(document).ready(function () {
         $('#crudTable').DataTable({
           
             dom: 'Bfrtip',
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+            buttons: ['excel', 'print'],
+            // buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
             processing: true,
             serverSide: true,
             "bPaginate": false,
